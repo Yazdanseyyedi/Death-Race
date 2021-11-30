@@ -1,3 +1,3 @@
 # Death-Race
 
-- [ ] Arisa An Mikhorad
+- [X] Arisa An Mikhorad
