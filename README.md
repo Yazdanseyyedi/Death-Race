@@ -1,8 +1,8 @@
 # Death-Race
 
-- [ ] Download assets
-- [ ] Setup the project
-- [ ] Design a map
+- [X] Download assets
+- [X] Setup the project
+- [X] Design a map
 - [ ] Player move controller
 - [ ] implement each players' camera
 - [ ] Design increase/decrease speed platform
