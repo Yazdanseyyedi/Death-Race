@@ -58,8 +58,8 @@ public class TopDownCarController : MonoBehaviour
         if (carRigidbody2D.velocity.sqrMagnitude > maxSpeed * maxSpeed && accelrationInput > 0)
             return;
 
-        if (accelerationFactor == 0)
-            carRigidbody2D.drag = Mathf.Lerp(carRigidbody2D.drag, 2.0f, Time.fixedDeltaTime);
+        if (accelrationInput == 0)
+            carRigidbody2D.drag = Mathf.Lerp(carRigidbody2D.drag, 2.0f, Time.fixedDeltaTime * 80);
         else carRigidbody2D.drag = 0;
 
         // Create a force for the engine
