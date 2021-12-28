@@ -20,4 +20,19 @@ public class PlayerController : MonoBehaviour
 
         topDownCarController.SetInputVector(inputVector);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Muddy"))
+        {
+            topDownCarController.maxSpeed = 4;
+            topDownCarController.accelerationFactor = 4;
+        }
+
+        if (collision.gameObject.CompareTag("Main"))
+        {
+            topDownCarController.maxSpeed = 10;
+            topDownCarController.accelerationFactor = 10;
+        }
+    }
 }
