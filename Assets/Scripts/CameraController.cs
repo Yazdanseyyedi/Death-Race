@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public PlayerController car;
+    public GameObject car;
     void Update()
     {
         transform.position = new Vector3(car.transform.position.x, car.transform.position.y, transform.position.z);
