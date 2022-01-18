@@ -5,10 +5,21 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     TopDownCarController topDownCarController;
+    public EventSystemCustom eventSystem;
+
+    public HealthBar healthBar;
+    public int maxHealth = 100;
+    public int currentHealth;
 
     private void Awake()
     {
         topDownCarController = GetComponent<TopDownCarController>();
+    }
+
+    private void Start()
+    {
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     private void Update()
@@ -19,7 +30,11 @@ public class PlayerController : MonoBehaviour
             inputVector.x = Input.GetAxis("Horizontal");
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))
             inputVector.y = Input.GetAxis("Vertical");
-
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            currentHealth -= 13;
+            eventSystem.onRocketDamage.Invoke();
+        }
         topDownCarController.SetInputVector(inputVector);
     }
 
