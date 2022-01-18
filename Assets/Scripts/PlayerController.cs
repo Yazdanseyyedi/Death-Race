@@ -19,11 +19,6 @@ public class PlayerController : MonoBehaviour
             inputVector.x = Input.GetAxis("Horizontal");
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))
             inputVector.y = Input.GetAxis("Vertical");
-        if (inputVector.x != 0 && inputVector.y !=0)
-        {
-            Debug.Log(inputVector.x);
-            Debug.Log(inputVector.y);
-        }
 
         topDownCarController.SetInputVector(inputVector);
     }
@@ -32,6 +27,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Muddy"))
         {
+            Debug.Log("car one in muddy part");
             topDownCarController.maxSpeed = 4;
             topDownCarController.accelerationFactor = 4;
         }
