@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,8 +12,8 @@ public class PlayerController : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
 
-    public GameObject[] prefabs;
-    public GameObject item_prefab;
+    public string[] prefabs;
+    public string itemPrefab;
 
     public int pathCounter = 0;
 
@@ -39,6 +40,11 @@ public class PlayerController : MonoBehaviour
         {
             currentHealth -= 13;
             eventSystem.onRocketDamage.Invoke();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            topDownCarController.LunchRocket();
         }
         topDownCarController.SetInputVector(inputVector);
     }
@@ -67,7 +73,11 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Box"))
         {
-            item_prefab = prefabs[GetRandomPrefabType(prefabs.Length)];
+            itemPrefab = prefabs[GetRandomPrefabType(prefabs.Length)];
+            if (itemPrefab == "rocket")
+            {
+                topDownCarController.ActiveCombo = "rocket";
+            }
             Destroy(collision.gameObject);
         }
     }
