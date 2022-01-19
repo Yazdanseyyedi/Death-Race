@@ -15,6 +15,8 @@ public class SecondPlayerController : MonoBehaviour
     public string[] prefabs;
     public string itemPrefab;
 
+    public int pathCounter = 0;
+
     private void Awake()
     {
         topDownCarController = GetComponent<TopDownCarController>();
