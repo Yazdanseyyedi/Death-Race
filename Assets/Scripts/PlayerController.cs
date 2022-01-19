@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
 
+    public GameObject[] prefabs;
+    public GameObject item_prefab;
+
     private void Awake()
     {
         topDownCarController = GetComponent<TopDownCarController>();
@@ -52,5 +55,17 @@ public class PlayerController : MonoBehaviour
             topDownCarController.maxSpeed = 10;
             topDownCarController.accelerationFactor = 10;
         }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Box"))
+        {
+            item_prefab = prefabs[GetRandomPrefabType(prefabs.Length)];
+            Destroy(collision.gameObject);
+        }
+    }
+    int GetRandomPrefabType(int max)
+    {
+        return UnityEngine.Random.Range(0, max);
     }
 }
