@@ -47,6 +47,12 @@ public class PlayerController : MonoBehaviour
             topDownCarController.LunchRocket();
         }
         topDownCarController.SetInputVector(inputVector);
+
+        if (currentHealth <= 0)
+        {
+            Debug.Log("player one has died");
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -11,6 +11,7 @@ public class SecondPlayerController : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
 
+    public int pathCounter = 0;
 
     public string[] prefabs;
     public string itemPrefab;
@@ -45,6 +46,12 @@ public class SecondPlayerController : MonoBehaviour
             topDownCarController.LunchRocket();
         }
         topDownCarController.SetInputVector(inputVector);
+
+        if (currentHealth <= 0)
+        {
+            Debug.Log("player two has died");
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -61,6 +68,7 @@ public class SecondPlayerController : MonoBehaviour
             topDownCarController.maxSpeed = 10;
             topDownCarController.accelerationFactor = 10;
         }
+
         if (collision.gameObject.CompareTag("checkPath"))
         {
             pathCounter += 1;
