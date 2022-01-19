@@ -47,6 +47,11 @@ public class SecondPlayerController : MonoBehaviour
             topDownCarController.LunchRocket();
         }
         topDownCarController.SetInputVector(inputVector);
+        if (currentHealth <= 0)
+        {
+            Debug.Log("player two has died");
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
