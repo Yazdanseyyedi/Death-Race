@@ -15,6 +15,7 @@ public class BoxPlacer : MonoBehaviour
 
     public void box_gen()
     {
+        Debug.Log("box generation called");
         GameObject go;
         go = Instantiate(box);
         go.transform.position = new Vector3(transform.position.x,

@@ -11,8 +11,10 @@ public class SecondPlayerController : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
 
+
     public string[] prefabs;
     public string itemPrefab;
+
     private void Awake()
     {
         topDownCarController = GetComponent<TopDownCarController>();
@@ -58,6 +60,11 @@ public class SecondPlayerController : MonoBehaviour
         {
             topDownCarController.maxSpeed = 10;
             topDownCarController.accelerationFactor = 10;
+        }
+        if (collision.gameObject.CompareTag("checkPath"))
+        {
+            pathCounter += 1;
+            Debug.Log("checkpath enter...");
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
