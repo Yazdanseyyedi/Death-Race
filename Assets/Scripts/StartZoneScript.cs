@@ -5,19 +5,32 @@ using UnityEngine;
 public class StartZoneScript : MonoBehaviour
 {
     public EventSystemCustom eventSystem;
+    public PlayerController pc;
+    public SecondPlayerController spc;
 
+    private void Start()
+    {
+        eventSystem.PlayerOneCycleEnter.Invoke();
+        eventSystem.PlayerTwoCycleEnter.Invoke();
+
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Car"))
-        {
-            Debug.Log("player 1");
-            eventSystem.PlayerOneCycleEnter.Invoke();
+        { 
+            if (pc.pathCounter == 3){
+                pc.pathCounter = 0;
+                eventSystem.PlayerOneCycleEnter.Invoke();
+            }
 
         }
         if (collision.gameObject.CompareTag("Car2"))
         {
-            Debug.Log("player 2");
-            eventSystem.PlayerTwoCycleEnter.Invoke();
+            if(spc.pathCounter == 3)
+            {
+                spc.pathCounter = 0;
+                eventSystem.PlayerTwoCycleEnter.Invoke();
+            }
         }
     }
 }

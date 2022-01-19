@@ -11,6 +11,7 @@ TagManager:
   - Car
   - Car2
   - Box
+  - checkPath
   layers:
   - Default
   - TransparentFX
