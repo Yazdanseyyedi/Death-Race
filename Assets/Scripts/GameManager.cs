@@ -25,6 +25,48 @@ public class GameManager : MonoBehaviour
     public PlayerController pc;
     public SecondPlayerController spc;
 
+    public EventSystemCustom eventSystem;
+
+    private void Start()
+    {
+        eventSystem.playeroneWine.AddListener(playerOneWine);
+        eventSystem.playertwoWine.AddListener(playerTwoWine);
+    }
+
+    public void playerTwoWine()
+    {
+        if (!GameHasEnd)
+        {
+            winner.text = "car2";
+            looser.text = "car1";
+            spc.score += 100;
+            score1.text = spc.score.ToString();
+            score2.text = pc.score.ToString();
+            cycle1.text = spc.cycleCounter.ToString();
+            cycle2.text = pc.cycleCounter.ToString();
+            damage1.text = spc.damage.ToString();
+            damage2.text = pc.damage.ToString();
+            GameHasEnd = true;
+        }
+    }
+
+    public void playerOneWine()
+    {
+        if (!GameHasEnd)
+        {
+            winner.text = "car1";
+            looser.text = "car2";
+            pc.score += 100;
+            score1.text = pc.score.ToString();
+            score2.text = spc.score.ToString();
+            cycle1.text = pc.cycleCounter.ToString();
+            cycle2.text = spc.cycleCounter.ToString();
+            damage1.text = pc.damage.ToString();
+            damage2.text = spc.damage.ToString();
+            GameHasEnd = true;
+        }
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -39,6 +81,7 @@ public class GameManager : MonoBehaviour
                 PauseGame();
             }
         }
+
     }
 
     public void ResumeGame()
@@ -57,38 +100,19 @@ public class GameManager : MonoBehaviour
 
     public void GameEnd()
     {
-        if (!GameHasEnd)
-        {
-            GameHasEnd = true;
-            Time.timeScale = 0f;
+        Debug.Log("game end");
+        Time.timeScale = 0f;
+        //pauseMenuUi.SetActive(false);
+        endMenuUi.SetActive(true);
+        //Application.Quit();
+    }
 
-            if (pc.isWinner)
-            {
-                winner.text = "car1";
-                looser.text = "car2";
-                pc.score += 100;
-                score1.text = pc.score.ToString();
-                score2.text = spc.score.ToString();
-                cycle1.text = pc.cycleCounter.ToString();
-                cycle2.text = spc.cycleCounter.ToString();
-                damage1.text = pc.damage.ToString();
-                damage2.text = spc.damage.ToString();
-            }
-            else
-            {
-                winner.text = "car2";
-                looser.text = "car1";
-                spc.score += 100;
-                score1.text = spc.score.ToString();
-                score2.text = pc.score.ToString();
-                cycle1.text = spc.cycleCounter.ToString();
-                cycle2.text = pc.cycleCounter.ToString();
-                damage1.text = spc.damage.ToString();
-                damage2.text = pc.damage.ToString();
-            }
-            endMenuUi.SetActive(true);
-            //Application.Quit();
-        }
+    public void quitGame()
+    {
+        Debug.Log("quit");
+        pauseMenuUi.SetActive(false);
+        GameHasEnd = true;
+        GameEnd();
     }
 
     public void LoadMenu()
