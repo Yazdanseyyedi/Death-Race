@@ -14,7 +14,7 @@ public class TopDownCarController : MonoBehaviour
 
     public GameObject RocketObject;
     public GameObject RocketPrefab;
-    public GameObject Rocket;
+    GameObject Rocket;
     // Local variables
     float accelrationInput = 0;
     float steeringInput = 0;
@@ -59,8 +59,7 @@ public class TopDownCarController : MonoBehaviour
             RocketObject.SetActive(false);
             Rocket = Instantiate(RocketPrefab);
             Rocket.transform.position = transform.position + new Vector3(carRigidbody2D.GetRelativeVector(Vector2.up).x, carRigidbody2D.GetRelativeVector(Vector2.up).y, -1);
-            //Rocket.GetComponent<Rigidbody2D>.MoveRotation(rotationAngle) = transform.rotation.z;
-
+            ActiveCombo = "";
         }
     }
     // Frame-rate independent for physics calculations

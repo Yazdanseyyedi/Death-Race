@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
             eventSystem.onRocketDamage.Invoke();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.RightControl))
         {
             topDownCarController.LunchRocket();
         }
@@ -72,6 +72,13 @@ public class PlayerController : MonoBehaviour
                 topDownCarController.ActiveCombo = "rocket";
             }
             Destroy(collision.gameObject);
+        }
+        
+        if (collision.gameObject.CompareTag("second rocket"))
+        {
+            Destroy(collision.gameObject);
+            currentHealth -= 30;
+            eventSystem.onRocketDamage.Invoke();
         }
     }
     int GetRandomPrefabType(int max)

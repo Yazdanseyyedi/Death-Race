@@ -11,8 +11,8 @@ public class SecondPlayerController : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
 
-    public GameObject[] prefabs;
-    public GameObject item_prefab;
+    public string[] prefabs;
+    public string itemPrefab;
     private void Awake()
     {
         topDownCarController = GetComponent<TopDownCarController>();
@@ -38,6 +38,10 @@ public class SecondPlayerController : MonoBehaviour
             currentHealth -= 13;
             eventSystem.onRocketDamage.Invoke();
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            topDownCarController.LunchRocket();
+        }
         topDownCarController.SetInputVector(inputVector);
     }
 
@@ -60,8 +64,18 @@ public class SecondPlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Box"))
         {
-            item_prefab = prefabs[GetRandomPrefabType(prefabs.Length)];
+            itemPrefab = prefabs[GetRandomPrefabType(prefabs.Length)];
+            if (itemPrefab == "rocket")
+            {
+                topDownCarController.ActiveCombo = "rocket";
+            }
             Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.CompareTag("rocket"))
+        {
+            Destroy(collision.gameObject);
+            currentHealth -= 30;
+            eventSystem.onRocketDamage.Invoke();
         }
     }
     int GetRandomPrefabType(int max)
