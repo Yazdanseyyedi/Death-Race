@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightControl))
         {
             topDownCarController.LunchRocket();
+            topDownCarController.LunchMine();
         }
         topDownCarController.SetInputVector(inputVector);
     }
@@ -68,6 +69,12 @@ public class PlayerController : MonoBehaviour
             pathCounter += 1;
             Debug.Log("checkpath enter...");
         }
+        if (collision.gameObject.CompareTag("mine"))
+        {
+            Destroy(collision.gameObject);
+            currentHealth -= 30;
+            eventSystem.onRocketDamage.Invoke();
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -78,6 +85,10 @@ public class PlayerController : MonoBehaviour
             {
                 topDownCarController.ActiveCombo = "rocket";
             }
+            if (itemPrefab == "mine")
+            {
+                topDownCarController.ActiveCombo = "mine";
+            }
             Destroy(collision.gameObject);
         }
         
@@ -87,6 +98,7 @@ public class PlayerController : MonoBehaviour
             currentHealth -= 30;
             eventSystem.onRocketDamage.Invoke();
         }
+        
     }
     int GetRandomPrefabType(int max)
     {

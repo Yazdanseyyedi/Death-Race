@@ -12,6 +12,9 @@ TagManager:
   - Car2
   - Box
   - checkPath
+  - second rocket
+  - rocket
+  - mine
   layers:
   - Default
   - TransparentFX
