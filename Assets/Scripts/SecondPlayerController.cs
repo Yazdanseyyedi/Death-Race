@@ -20,7 +20,6 @@ public class SecondPlayerController : MonoBehaviour
     public int score = 0;
     public int damage = 0;
 
-    public bool isWinner = true;
     private void Awake()
     {
         topDownCarController = GetComponent<TopDownCarController>();
@@ -54,7 +53,7 @@ public class SecondPlayerController : MonoBehaviour
         if (currentHealth <= 0)
         {
             Debug.Log("player two has died");
-            isWinner = false;
+            eventSystem.playeroneWine.Invoke();
             FindObjectOfType<GameManager>().GameEnd();
            // Destroy(gameObject);
         }

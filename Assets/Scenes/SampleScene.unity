@@ -764,7 +764,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.315506, y: -12.149994}
+  m_AnchoredPosition: {x: -2.3154907, y: -12.149994}
   m_SizeDelta: {x: -50.99716, y: -248.32059}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &37959013
@@ -10074,6 +10074,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameIsPaused: 0
+  GameHasEnd: 0
   pauseMenuUi: {fileID: 349271156}
   endMenuUi: {fileID: 668046950}
   score1: {fileID: 707767340}
@@ -10086,6 +10087,7 @@ MonoBehaviour:
   damage2: {fileID: 37560011}
   pc: {fileID: 1420969788}
   spc: {fileID: 2020520045}
+  eventSystem: {fileID: 1994240619}
 --- !u!4 &755795366
 Transform:
   m_ObjectHideFlags: 0
@@ -12214,7 +12216,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1327757716}
-        m_MethodName: GameEnd
+        m_MethodName: quitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17763,6 +17765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameIsPaused: 0
+  GameHasEnd: 0
   pauseMenuUi: {fileID: 349271156}
   endMenuUi: {fileID: 0}
   score1: {fileID: 0}
@@ -17775,6 +17778,7 @@ MonoBehaviour:
   damage2: {fileID: 0}
   pc: {fileID: 0}
   spc: {fileID: 0}
+  eventSystem: {fileID: 0}
 --- !u!1 &1340985991
 GameObject:
   m_ObjectHideFlags: 0
@@ -18655,7 +18659,8 @@ MonoBehaviour:
   itemPrefab: 
   pathCounter: 0
   cycleCounter: 0
-  isWinner: 1
+  score: 0
+  damage: 0
 --- !u!114 &1420969789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27071,6 +27076,12 @@ MonoBehaviour:
   PlayerTwoCycleEnter:
     m_PersistentCalls:
       m_Calls: []
+  playeroneWine:
+    m_PersistentCalls:
+      m_Calls: []
+  playertwoWine:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1994240620
 Transform:
   m_ObjectHideFlags: 0
@@ -27154,7 +27165,8 @@ MonoBehaviour:
   itemPrefab: 
   pathCounter: 0
   cycleCounter: 0
-  isWinner: 1
+  score: 0
+  damage: 0
 --- !u!114 &2020520046
 MonoBehaviour:
   m_ObjectHideFlags: 0
