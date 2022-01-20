@@ -16,6 +16,11 @@ public class PlayerController : MonoBehaviour
     public string itemPrefab;
 
     public int pathCounter = 0;
+    public int cycleCounter = 0;
+    public int score = 0;
+    public int damage = 0;
+
+    public bool isWinner = true;
 
     private void Awake()
     {
@@ -51,7 +56,9 @@ public class PlayerController : MonoBehaviour
         if (currentHealth <= 0)
         {
             Debug.Log("player one has died");
-            Destroy(gameObject);
+            isWinner = false;
+            FindObjectOfType<GameManager>().GameEnd();
+            //Destroy(gameObject);
         }
     }
 
@@ -72,7 +79,6 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("checkPath"))
         {
             pathCounter += 1;
-            Debug.Log("checkpath enter...");
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
