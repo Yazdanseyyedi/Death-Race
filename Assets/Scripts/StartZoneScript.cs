@@ -24,6 +24,7 @@ public class StartZoneScript : MonoBehaviour
         { 
             if (pc.pathCounter >= 3){
                 pc.pathCounter = 0;
+                pc.cycleCounter += 1;
                 eventSystem.PlayerOneCycleEnter.Invoke();
             }
 
@@ -33,6 +34,7 @@ public class StartZoneScript : MonoBehaviour
             if(spc.pathCounter >= 3)
             {
                 spc.pathCounter = 0;
+                spc.cycleCounter += 1;
                 eventSystem.PlayerTwoCycleEnter.Invoke();
             }
         }
