@@ -84,10 +84,16 @@ public class SecondPlayerController : MonoBehaviour
         topDownCarController.SetInputVector(inputVector);
         if (currentHealth <= 0)
         {
-            Debug.Log("player two has died");
-            eventSystem.playeroneWine.Invoke();
+            //Debug.Log("player two has died");
+            //eventSystem.playeroneWine.Invoke();
+            FindObjectOfType<GameManager>().playerOneWin();
             FindObjectOfType<GameManager>().GameEnd();
-           // Destroy(gameObject);
+            // Destroy(gameObject);
+        }
+        if (cycleCounter >= 5)
+        {
+            FindObjectOfType<GameManager>().playerTwoWin();
+            FindObjectOfType<GameManager>().GameEnd();
         }
     }
 
@@ -116,19 +122,18 @@ public class SecondPlayerController : MonoBehaviour
             if (!shieldActivate)
             {
                 currentHealth -= 30;
+                damage += 30;
             }
             else
             {
                 shieldHealth -= 30;
+                damage += 30;
                 if (shieldHealth >= 0) return;
                 currentHealth += shieldHealth;
                 shieldActivate = false;
             }
             eventSystem.onRocketDamage.Invoke();
         }
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
         if (collision.gameObject.CompareTag("Box"))
         {
             itemPrefab = prefabs[GetRandomPrefabType(prefabs.Length)];
@@ -143,7 +148,7 @@ public class SecondPlayerController : MonoBehaviour
                     topDownCarController.ActiveCombo = "mine";
                 }
             }
-            
+
             if (itemPrefab == "shield")
             {
                 //currentHealth += 40;
@@ -154,16 +159,21 @@ public class SecondPlayerController : MonoBehaviour
             }
             Destroy(collision.gameObject);
         }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
         if (collision.gameObject.CompareTag("rocket"))
         {
             Destroy(collision.gameObject);
             if (!shieldActivate)
             {
                 currentHealth -= 30;
+                damage += 30;
             }
             else
             {
                 shieldHealth -= 30;
+                damage += 30;
                 if (shieldHealth >= 0) return;
                 currentHealth += shieldHealth;
                 shieldActivate = false;

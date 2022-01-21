@@ -27,42 +27,50 @@ public class GameManager : MonoBehaviour
 
     public EventSystemCustom eventSystem;
 
-    private void Start()
-    {
-        eventSystem.playeroneWine.AddListener(playerOneWine);
-        eventSystem.playertwoWine.AddListener(playerTwoWine);
-    }
-
-    public void playerTwoWine()
+    public void playerTwoWin()
     {
         if (!GameHasEnd)
         {
             winner.text = "car2";
             looser.text = "car1";
+            try
+            {
+                spc.score = PlayerPrefs.GetInt("score_two");
+                pc.score = PlayerPrefs.GetInt("score_one");
+            }
+            catch (Exception) { }
             spc.score += 100;
+            PlayerPrefs.SetInt("score_two", spc.score);
             score1.text = spc.score.ToString();
             score2.text = pc.score.ToString();
             cycle1.text = spc.cycleCounter.ToString();
             cycle2.text = pc.cycleCounter.ToString();
-            damage1.text = spc.damage.ToString();
-            damage2.text = pc.damage.ToString();
+            damage2.text = spc.damage.ToString();
+            damage1.text = pc.damage.ToString();
             GameHasEnd = true;
         }
     }
 
-    public void playerOneWine()
+    public void playerOneWin()
     {
         if (!GameHasEnd)
         {
             winner.text = "car1";
             looser.text = "car2";
+            try
+            {
+                spc.score = PlayerPrefs.GetInt("score_two");
+                pc.score = PlayerPrefs.GetInt("score_one");
+            }
+            catch (Exception) { }
             pc.score += 100;
+            PlayerPrefs.SetInt("score_one", pc.score);
             score1.text = pc.score.ToString();
             score2.text = spc.score.ToString();
             cycle1.text = pc.cycleCounter.ToString();
             cycle2.text = spc.cycleCounter.ToString();
-            damage1.text = pc.damage.ToString();
-            damage2.text = spc.damage.ToString();
+            damage2.text = pc.damage.ToString();
+            damage1.text = spc.damage.ToString();
             GameHasEnd = true;
         }
     }
@@ -74,7 +82,6 @@ public class GameManager : MonoBehaviour
             if (GameIsPaused)
             {
                 ResumeGame();
-                //GameIsPaused = false;
             }
             else
             {
@@ -100,19 +107,13 @@ public class GameManager : MonoBehaviour
 
     public void GameEnd()
     {
-        Debug.Log("game end");
-        Time.timeScale = 0f;
-        //pauseMenuUi.SetActive(false);
+        //Time.timeScale = 0f;
         endMenuUi.SetActive(true);
-        //Application.Quit();
     }
 
-    public void quitGame()
+    public void quit()
     {
-        Debug.Log("quit");
-        pauseMenuUi.SetActive(false);
-        GameHasEnd = true;
-        GameEnd();
+        Application.Quit();
     }
 
     public void LoadMenu()
@@ -125,12 +126,10 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1f;
         GameIsPaused = false;
         GameHasEnd = false;
-        spc.damage = 0;
-        pc.damage = 0;
+        SceneManager.LoadScene("SampleScene");
     }
 }
 
