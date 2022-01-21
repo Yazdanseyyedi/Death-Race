@@ -25,6 +25,7 @@ public class SecondPlayerController : MonoBehaviour
     private void Awake()
     {
         topDownCarController = GetComponent<TopDownCarController>();
+        
     }
 
     private void Start()
@@ -35,6 +36,14 @@ public class SecondPlayerController : MonoBehaviour
 
     private void Update()
     {
+        int P2 = PlayerPrefs.GetInt("P2");
+        if (P2 == 1)
+        {
+            topDownCarController.maxSpeed = 30;
+            topDownCarController.accelerationFactor = 20;
+        }
+
+        Debug.Log(topDownCarController.maxSpeed);
         Vector2 inputVector = Vector2.zero;
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))

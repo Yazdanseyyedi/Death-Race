@@ -17929,18 +17929,18 @@ MonoBehaviour:
   GameIsPaused: 0
   GameHasEnd: 0
   pauseMenuUi: {fileID: 349271156}
-  endMenuUi: {fileID: 0}
-  score1: {fileID: 0}
-  score2: {fileID: 0}
-  cycle1: {fileID: 0}
-  cycle2: {fileID: 0}
-  winner: {fileID: 0}
-  looser: {fileID: 0}
-  damage1: {fileID: 0}
-  damage2: {fileID: 0}
-  pc: {fileID: 0}
-  spc: {fileID: 0}
-  eventSystem: {fileID: 0}
+  endMenuUi: {fileID: 668046950}
+  score1: {fileID: 707767340}
+  score2: {fileID: 1435413811}
+  cycle1: {fileID: 2102586189}
+  cycle2: {fileID: 77559947}
+  winner: {fileID: 2108881277}
+  looser: {fileID: 1278975170}
+  damage1: {fileID: 165022674}
+  damage2: {fileID: 37560011}
+  pc: {fileID: 1420969788}
+  spc: {fileID: 2020520045}
+  eventSystem: {fileID: 1994240619}
 --- !u!1 &1340985991
 GameObject:
   m_ObjectHideFlags: 0

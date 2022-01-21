@@ -12,6 +12,10 @@ TagManager:
   - Car2
   - Box
   - checkPath
+  - mine
+  - second rocket
+  - rocket
+  - Event
   layers:
   - Default
   - TransparentFX
