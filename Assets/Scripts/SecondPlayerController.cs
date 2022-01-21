@@ -55,7 +55,7 @@ public class SecondPlayerController : MonoBehaviour
             PlayerPrefs.SetInt("P2",0);
         }
 
-        Debug.Log(topDownCarController.maxSpeed);
+        //Debug.Log(topDownCarController.maxSpeed);
         Vector2 inputVector = Vector2.zero;
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
@@ -105,7 +105,7 @@ public class SecondPlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Muddy"))
         {
-            Debug.Log("car two in muddy part");
+            //Debug.Log("car two in muddy part");
             topDownCarController.maxSpeed = 4;
             topDownCarController.accelerationFactor = 4;
         }

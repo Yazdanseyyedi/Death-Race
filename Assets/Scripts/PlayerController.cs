@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Muddy"))
         {
-            Debug.Log("car one in muddy part");
+            //ebug.Log("car one in muddy part");
             topDownCarController.maxSpeed = 4;
             topDownCarController.accelerationFactor = 4;
         }
