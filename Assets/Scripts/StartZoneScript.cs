@@ -12,6 +12,7 @@ public class StartZoneScript : MonoBehaviour
 
     private void Start()
     {
+        FindObjectOfType<AudioManager>().Play("start");
         bp1.box_gen();
         bp2.box_gen();
         //eventSystem.PlayerOneCycleEnter.Invoke();

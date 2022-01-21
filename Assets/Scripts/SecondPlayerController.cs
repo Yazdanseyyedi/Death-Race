@@ -125,6 +125,7 @@ public class SecondPlayerController : MonoBehaviour
             Destroy(collision.gameObject);
             if (!shieldActivate)
             {
+                FindObjectOfType<AudioManager>().Play("mine");
                 currentHealth -= 30;
                 damage += 30;
             }
@@ -135,11 +136,13 @@ public class SecondPlayerController : MonoBehaviour
                 if (shieldHealth >= 0) return;
                 currentHealth += shieldHealth;
                 shieldActivate = false;
+                FindObjectOfType<AudioManager>().Play("shieldBrok");
             }
             eventSystem.onRocketDamage.Invoke();
         }
         if (collision.gameObject.CompareTag("Box"))
         {
+            FindObjectOfType<AudioManager>().Play("box");
             itemPrefab = prefabs[GetRandomPrefabType(prefabs.Length)];
             if (topDownCarController.ActiveCombo == "")
             {
@@ -181,6 +184,7 @@ public class SecondPlayerController : MonoBehaviour
                 if (shieldHealth >= 0) return;
                 currentHealth += shieldHealth;
                 shieldActivate = false;
+                FindObjectOfType<AudioManager>().Play("shieldBrok");
             }
             eventSystem.onRocketDamage.Invoke();
         }

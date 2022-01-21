@@ -16715,8 +16715,8 @@ GameObject:
   m_Component:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
-  - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420029}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -16731,7 +16731,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!114 &519420030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22887,6 +22887,80 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1235398846}
   m_RootOrder: 153
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &754281096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 754281098}
+  - component: {fileID: 754281097}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &754281097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754281096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ddd0bc275b62b745bb05cbf628bfd64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: box
+    clip: {fileID: 8300000, guid: 4d2c87b46cfb6de4b84cd8271eb56342, type: 3}
+    volume: 0.946
+    pitch: 1.06
+    source: {fileID: 0}
+  - name: shieldBrok
+    clip: {fileID: 8300000, guid: f560007533a40c04bbb1d1b1b4a5ea34, type: 3}
+    volume: 0.956
+    pitch: 1.14
+    source: {fileID: 0}
+  - name: rocket
+    clip: {fileID: 8300000, guid: 21adc2c8db95f2745975e98ea767e42c, type: 3}
+    volume: 0.956
+    pitch: 1.14
+    source: {fileID: 0}
+  - name: mine
+    clip: {fileID: 8300000, guid: 2668cd508ee4d3842a24e9e785cce641, type: 3}
+    volume: 0.956
+    pitch: 1.14
+    source: {fileID: 0}
+  - name: start
+    clip: {fileID: 8300000, guid: df16cb2c095f78b4197d00ce7e1227d0, type: 3}
+    volume: 0.956
+    pitch: 1.14
+    source: {fileID: 0}
+  - name: putMine
+    clip: {fileID: 8300000, guid: 25182f2aef9af92429eb05212b170d39, type: 3}
+    volume: 0.956
+    pitch: 1.14
+    source: {fileID: 0}
+--- !u!4 &754281098
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754281096}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 393.37903, y: 173.7752, z: 210.30534}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &755795364
 GameObject:
@@ -63129,8 +63203,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1972453360}
   - component: {fileID: 1972453363}
-  - component: {fileID: 1972453362}
   - component: {fileID: 1972453361}
+  - component: {fileID: 1972453362}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -63172,7 +63246,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1972453359}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!20 &1972453363
 Camera:
   m_ObjectHideFlags: 0
@@ -64853,6 +64927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventSystem: {fileID: 1994240619}
+  explosionPrefab: {fileID: 0}
   healthBar: {fileID: 1103639028}
   maxHealth: 100
   currentHealth: 0
