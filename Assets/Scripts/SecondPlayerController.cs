@@ -6,6 +6,7 @@ public class SecondPlayerController : MonoBehaviour
 {
     TopDownCarController topDownCarController;
     public EventSystemCustom eventSystem;
+    public GameObject explosionPrefab;
 
     public HealthBar healthBar;
     public int maxHealth = 100;
@@ -86,6 +87,9 @@ public class SecondPlayerController : MonoBehaviour
         {
             //Debug.Log("player two has died");
             //eventSystem.playeroneWine.Invoke();
+            GameObject explosion = Instantiate(explosionPrefab);
+            explosion.transform.position = gameObject.transform.position;
+            Destroy(gameObject);
             FindObjectOfType<GameManager>().playerOneWin();
             FindObjectOfType<GameManager>().GameEnd();
             // Destroy(gameObject);
