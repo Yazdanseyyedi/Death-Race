@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     public int score = 0;
     public int damage = 0;
 
+    public Vector3 startPosition;
+
     private void Awake()
     {
         topDownCarController = GetComponent<TopDownCarController>();
@@ -29,6 +31,8 @@ public class PlayerController : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        startPosition = transform.position;
+        //DontDestroyOnLoad(this);
     }
 
     private void Update()
@@ -53,8 +57,8 @@ public class PlayerController : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Debug.Log("player one has died");
-            eventSystem.playertwoWine.Invoke();
+            //Debug.Log("player one has died");
+            eventSystem.playertwoWin.Invoke();
             FindObjectOfType<GameManager>().GameEnd();
             //Destroy(gameObject);
         }

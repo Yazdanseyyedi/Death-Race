@@ -968,7 +968,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1327757716}
-        m_MethodName: Restart
+        m_MethodName: NextRace
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12216,7 +12216,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1327757716}
-        m_MethodName: quitGame
+        m_MethodName: GameEnd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18661,6 +18661,7 @@ MonoBehaviour:
   cycleCounter: 0
   score: 0
   damage: 0
+  startPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1420969789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27076,10 +27077,10 @@ MonoBehaviour:
   PlayerTwoCycleEnter:
     m_PersistentCalls:
       m_Calls: []
-  playeroneWine:
+  playeroneWin:
     m_PersistentCalls:
       m_Calls: []
-  playertwoWine:
+  playertwoWin:
     m_PersistentCalls:
       m_Calls: []
 --- !u!4 &1994240620
@@ -27167,6 +27168,7 @@ MonoBehaviour:
   cycleCounter: 0
   score: 0
   damage: 0
+  startPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &2020520046
 MonoBehaviour:
   m_ObjectHideFlags: 0

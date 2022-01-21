@@ -29,11 +29,11 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        eventSystem.playeroneWine.AddListener(playerOneWine);
-        eventSystem.playertwoWine.AddListener(playerTwoWine);
+        eventSystem.playeroneWin.AddListener(playerOneWin);
+        eventSystem.playertwoWin.AddListener(playerTwoWin);
     }
 
-    public void playerTwoWine()
+    public void playerTwoWin()
     {
         if (!GameHasEnd)
         {
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void playerOneWine()
+    public void playerOneWin()
     {
         if (!GameHasEnd)
         {
@@ -100,20 +100,20 @@ public class GameManager : MonoBehaviour
 
     public void GameEnd()
     {
-        Debug.Log("game end");
+        //Debug.Log("game end");
         Time.timeScale = 0f;
         //pauseMenuUi.SetActive(false);
         endMenuUi.SetActive(true);
         //Application.Quit();
     }
 
-    public void quitGame()
+    /*public void quitGame()
     {
         Debug.Log("quit");
         pauseMenuUi.SetActive(false);
         GameHasEnd = true;
         GameEnd();
-    }
+    }*/
 
     public void LoadMenu()
     {
@@ -129,8 +129,23 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         GameIsPaused = false;
         GameHasEnd = false;
+    }
+    
+    public void NextRace()
+    {
+        Debug.Log("next race");
+        //endMenuUi.SetActive(false);
+        pc.transform.position = pc.startPosition;
+        spc.transform.position = pc.startPosition;
+        GameIsPaused = false;
+        GameHasEnd = false;
         spc.damage = 0;
         pc.damage = 0;
+        spc.cycleCounter = 0;
+        pc.cycleCounter = 0;
+        spc.pathCounter = 0;
+        pc.pathCounter = 0;
+        Time.timeScale = 1f;
     }
 }
 
