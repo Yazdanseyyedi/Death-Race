@@ -10,8 +10,6 @@ public class EventSystemCustom : MonoBehaviour
     public UnityEvent onMineDamage;
     public UnityEvent PlayerOneCycleEnter;
     public UnityEvent PlayerTwoCycleEnter;
-    public UnityEvent playeroneWine;
-    public UnityEvent playertwoWine;
     void Awake()
     {
         onShotDamage = new UnityEvent();
@@ -19,7 +17,5 @@ public class EventSystemCustom : MonoBehaviour
         onMineDamage = new UnityEvent();
         PlayerOneCycleEnter = new UnityEvent();
         PlayerTwoCycleEnter = new UnityEvent();
-        playeroneWine = new UnityEvent();
-        playertwoWine = new UnityEvent();
     }
 }

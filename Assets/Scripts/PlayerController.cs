@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public int score = 0;
     public int damage = 0;
 
+
     private void Awake()
     {
         topDownCarController = GetComponent<TopDownCarController>();
@@ -64,10 +65,17 @@ public class PlayerController : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Debug.Log("player one has died");
-            eventSystem.playertwoWine.Invoke();
+            //Debug.Log("player one has died");
+            //eventSystem.playertwoWine.Invoke();
+            FindObjectOfType<GameManager>().playerTwoWine();
             FindObjectOfType<GameManager>().GameEnd();
+            
             //Destroy(gameObject);
+        }
+        if(cycleCounter >= 5)
+        {
+            FindObjectOfType<GameManager>().playerOneWine();
+            FindObjectOfType<GameManager>().GameEnd();
         }
     }
 
@@ -75,7 +83,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Muddy"))
         {
-            Debug.Log("car one in muddy part");
+            //Debug.Log("car one in muddy part");
             topDownCarController.maxSpeed = 4;
             topDownCarController.accelerationFactor = 4;
         }
@@ -95,10 +103,12 @@ public class PlayerController : MonoBehaviour
             if (!shieldActivate)
             {
                 currentHealth -= 30;
+                damage += 30;
             }
             else
             {
                 shieldHealth -= 30;
+                damage += 30;
                 if (shieldHealth >= 0) return;
                 currentHealth += shieldHealth;
                 shieldActivate = false;
@@ -106,9 +116,6 @@ public class PlayerController : MonoBehaviour
             eventSystem.onRocketDamage.Invoke();
 
         }
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
         if (collision.gameObject.CompareTag("Box"))
         {
             itemPrefab = prefabs[GetRandomPrefabType(prefabs.Length)];
@@ -123,7 +130,7 @@ public class PlayerController : MonoBehaviour
                     topDownCarController.ActiveCombo = "mine";
                 }
             }
-            
+
             if (itemPrefab == "shield")
             {
                 //currentHealth += 40;
@@ -134,17 +141,21 @@ public class PlayerController : MonoBehaviour
             }
             Destroy(collision.gameObject);
         }
-        
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {   
         if (collision.gameObject.CompareTag("second rocket"))
         {
             Destroy(collision.gameObject);
             if (!shieldActivate)
             {
                 currentHealth -= 30;
+                damage += 30;
             }
             else
             {
                 shieldHealth -= 30;
+                damage += 30;
                 if (shieldHealth >= 0) return;
                 currentHealth += shieldHealth;
                 shieldActivate = false;
