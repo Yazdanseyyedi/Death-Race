@@ -7,21 +7,22 @@ public class PlayerController : MonoBehaviour
 {
     TopDownCarController topDownCarController;
     public EventSystemCustom eventSystem;
-
+    public GameObject explosionPrefab;
     public HealthBar healthBar;
+    public GameObject shieldObject;
+
     public int maxHealth = 100;
     public int currentHealth;
     public int shieldHealth;
-    public bool shieldActivate;
-    public GameObject shieldObject;
-    
-    public string[] prefabs;
-    public string itemPrefab;
-
     public int pathCounter = 0;
     public int cycleCounter = 0;
     public int score = 0;
     public int damage = 0;
+
+    public bool shieldActivate;
+    
+    public string[] prefabs;
+    public string itemPrefab;
 
     private void Awake()
     {
@@ -84,6 +85,9 @@ public class PlayerController : MonoBehaviour
         {
             //Debug.Log("player one has died");
             //eventSystem.playertwoWine.Invoke();
+            GameObject explosion = Instantiate(explosionPrefab);
+            explosion.transform.position = gameObject.transform.position;
+            Destroy(gameObject);
             FindObjectOfType<GameManager>().playerTwoWin();
             FindObjectOfType<GameManager>().GameEnd();
 

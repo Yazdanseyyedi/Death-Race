@@ -43984,21 +43984,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventSystem: {fileID: 1994240619}
+  explosionPrefab: {fileID: 6771053208361121312, guid: 4aff8c808c6d7a645a39e080c280c790,
+    type: 3}
   healthBar: {fileID: 694600868}
+  shieldObject: {fileID: 1361562851}
   maxHealth: 100
   currentHealth: 0
   shieldHealth: 0
-  shieldActivate: 0
-  shieldObject: {fileID: 1361562851}
-  prefabs:
-  - rokcet
-  - mine
-  - shield
-  itemPrefab: 
   pathCounter: 0
   cycleCounter: 0
   score: 0
   damage: 0
+  shieldActivate: 0
+  prefabs:
+  - rocket
+  - mine
+  - shield
+  itemPrefab: 
 --- !u!114 &1420969789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64208,12 +64210,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   PlayerTwoCycleEnter:
-    m_PersistentCalls:
-      m_Calls: []
-  playeroneWine:
-    m_PersistentCalls:
-      m_Calls: []
-  playertwoWine:
     m_PersistentCalls:
       m_Calls: []
 --- !u!4 &1994240620

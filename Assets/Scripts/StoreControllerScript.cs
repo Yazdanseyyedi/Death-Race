@@ -35,6 +35,7 @@ public class StoreControllerScript : MonoBehaviour
             PlayerPrefs.SetInt("P1", ButtonRef.GetComponent<ButtonController>().ItemID);
             player1.text = "Player one choose item " + ButtonRef.GetComponent<ButtonController>().ItemID;
             player1Text.SetActive(true);
+            GameObject.FindGameObjectWithTag("Event").GetComponent<EventSystem>().SetSelectedGameObject(null);
             Debug.Log("Player one choose" + ButtonRef.GetComponent<ButtonController>().ItemID);
         }
         else if (!p2selected)
@@ -43,6 +44,7 @@ public class StoreControllerScript : MonoBehaviour
             PlayerPrefs.SetInt("P2", ButtonRef.GetComponent<ButtonController>().ItemID);
             player2.text = "Player two choose item " + ButtonRef.GetComponent<ButtonController>().ItemID;
             player2Text.SetActive(true);
+            GameObject.FindGameObjectWithTag("Event").GetComponent<EventSystem>().SetSelectedGameObject(null);
             Debug.Log("Player two choose" + ButtonRef.GetComponent<ButtonController>().ItemID);
         }
     }
