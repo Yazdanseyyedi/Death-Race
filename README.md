@@ -6,12 +6,12 @@
 - [X] Player move controller
 - [X] implement each players' camera
 - [X] Design increase/decrease speed platform
-- [ ] implement combos
-- [ ] implement players' fire, mine and shield
+- [X] implement combos
+- [X] implement players' fire, mine and shield
 - [X] implement players' damage
-- [ ] implement players' fire, mine controller
-- [ ] implement players' explosion and reset
-- [ ] reset score
+- [X] implement players' fire, mine controller
+- [X] implement players' explosion and reset
+- [X] reset score
 - [ ] sound and animation effects
-- [ ] design game menu
-- [ ] player's combo store
+- [X] design game menu
+- [X] player's combo store
