@@ -42,8 +42,8 @@ public class SecondPlayerController : MonoBehaviour
         int P2 = PlayerPrefs.GetInt("P2");
         if (P2 == 1)
         {
-            topDownCarController.maxSpeed = 30;
-            topDownCarController.accelerationFactor = 20;
+            topDownCarController.maxSpeed = 15;
+            topDownCarController.accelerationFactor = 12;
         }
         if (P2 == 2)
         {
@@ -120,8 +120,8 @@ public class SecondPlayerController : MonoBehaviour
             catch (System.Exception) { }
             if (combo == 1)
             {
-                topDownCarController.maxSpeed = 20;
-                topDownCarController.accelerationFactor = 15;
+                topDownCarController.maxSpeed = 15;
+                topDownCarController.accelerationFactor = 12;
             }
             else
             {
