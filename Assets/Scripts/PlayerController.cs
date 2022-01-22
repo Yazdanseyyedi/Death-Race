@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public int cycleCounter = 0;
     public int score = 0;
     public int damage = 0;
-
+    int combo;
     public bool shieldActivate;
     
     public string[] prefabs;
@@ -110,8 +110,21 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Main"))
         {
-            topDownCarController.maxSpeed = 10;
-            topDownCarController.accelerationFactor = 10;
+            try
+            {
+                combo = PlayerPrefs.GetInt("P1");
+            }
+            catch (Exception) { }
+            if (combo == 1)
+            {
+                topDownCarController.maxSpeed = 20;
+                topDownCarController.accelerationFactor = 15;
+            }
+            else
+            {
+                topDownCarController.maxSpeed = 10;
+                topDownCarController.accelerationFactor = 10;
+            }
         }
         if (collision.gameObject.CompareTag("checkPath"))
         {

@@ -64927,7 +64927,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventSystem: {fileID: 1994240619}
-  explosionPrefab: {fileID: 0}
+  explosionPrefab: {fileID: 6771053208361121312, guid: 4aff8c808c6d7a645a39e080c280c790,
+    type: 3}
   healthBar: {fileID: 1103639028}
   maxHealth: 100
   currentHealth: 0
