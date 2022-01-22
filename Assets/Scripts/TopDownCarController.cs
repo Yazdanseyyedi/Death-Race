@@ -65,6 +65,7 @@ public class TopDownCarController : MonoBehaviour
     {
         if (ActiveCombo == "mine")
         {
+            FindObjectOfType<AudioManager>().Play("putMine");
             RocketObject.SetActive(false);
             Mine = Instantiate(MinePrefab);
             Mine.transform.position = transform.position - new Vector3(3*carRigidbody2D.GetRelativeVector(Vector2.up).x, 3*carRigidbody2D.GetRelativeVector(Vector2.up).y, 0);
@@ -75,6 +76,7 @@ public class TopDownCarController : MonoBehaviour
     {
         if (ActiveCombo == "rocket")
         {
+            FindObjectOfType<AudioManager>().Play("rocket");
             RocketObject.SetActive(false);
             Rocket = Instantiate(RocketPrefab);
             Rocket.transform.position = transform.position + new Vector3(carRigidbody2D.GetRelativeVector(Vector2.up).x, carRigidbody2D.GetRelativeVector(Vector2.up).y, 0);

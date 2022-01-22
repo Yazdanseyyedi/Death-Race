@@ -27,7 +27,6 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         topDownCarController = GetComponent<TopDownCarController>();
-        
     }
 
     private void Start()
@@ -104,7 +103,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Muddy"))
         {
-            Debug.Log("car one in muddy part");
+            //ebug.Log("car one in muddy part");
             topDownCarController.maxSpeed = 4;
             topDownCarController.accelerationFactor = 4;
         }
@@ -123,6 +122,7 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
             if (!shieldActivate)
             {
+                FindObjectOfType<AudioManager>().Play("mine");
                 currentHealth -= 30;
                 damage += 30;
             }
@@ -133,12 +133,14 @@ public class PlayerController : MonoBehaviour
                 if (shieldHealth >= 0) return;
                 currentHealth += shieldHealth;
                 shieldActivate = false;
+                FindObjectOfType<AudioManager>().Play("shieldBrok");
             }
             eventSystem.onRocketDamage.Invoke();
 
         }
         if (collision.gameObject.CompareTag("Box"))
         {
+            FindObjectOfType<AudioManager>().Play("box");
             itemPrefab = prefabs[GetRandomPrefabType(prefabs.Length)];
             if (topDownCarController.ActiveCombo == "")
             {
@@ -180,6 +182,7 @@ public class PlayerController : MonoBehaviour
                 if (shieldHealth >= 0) return;
                 currentHealth += shieldHealth;
                 shieldActivate = false;
+                FindObjectOfType<AudioManager>().Play("shieldBrok");
             }
             eventSystem.onRocketDamage.Invoke();
 

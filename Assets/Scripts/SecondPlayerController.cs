@@ -55,7 +55,7 @@ public class SecondPlayerController : MonoBehaviour
             PlayerPrefs.SetInt("P2",0);
         }
 
-        Debug.Log(topDownCarController.maxSpeed);
+        //Debug.Log(topDownCarController.maxSpeed);
         Vector2 inputVector = Vector2.zero;
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
@@ -105,7 +105,7 @@ public class SecondPlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Muddy"))
         {
-            Debug.Log("car two in muddy part");
+            //Debug.Log("car two in muddy part");
             topDownCarController.maxSpeed = 4;
             topDownCarController.accelerationFactor = 4;
         }
@@ -125,6 +125,7 @@ public class SecondPlayerController : MonoBehaviour
             Destroy(collision.gameObject);
             if (!shieldActivate)
             {
+                FindObjectOfType<AudioManager>().Play("mine");
                 currentHealth -= 30;
                 damage += 30;
             }
@@ -135,11 +136,13 @@ public class SecondPlayerController : MonoBehaviour
                 if (shieldHealth >= 0) return;
                 currentHealth += shieldHealth;
                 shieldActivate = false;
+                FindObjectOfType<AudioManager>().Play("shieldBrok");
             }
             eventSystem.onRocketDamage.Invoke();
         }
         if (collision.gameObject.CompareTag("Box"))
         {
+            FindObjectOfType<AudioManager>().Play("box");
             itemPrefab = prefabs[GetRandomPrefabType(prefabs.Length)];
             if (topDownCarController.ActiveCombo == "")
             {
@@ -181,6 +184,7 @@ public class SecondPlayerController : MonoBehaviour
                 if (shieldHealth >= 0) return;
                 currentHealth += shieldHealth;
                 shieldActivate = false;
+                FindObjectOfType<AudioManager>().Play("shieldBrok");
             }
             eventSystem.onRocketDamage.Invoke();
         }
