@@ -11,7 +11,10 @@ public class PlayerController : MonoBehaviour
     public HealthBar healthBar;
     public int maxHealth = 100;
     public int currentHealth;
-
+    public int shieldHealth;
+    public bool shieldActivate;
+    public GameObject shieldObject;
+    
     public string[] prefabs;
     public string itemPrefab;
 
@@ -44,10 +47,18 @@ public class PlayerController : MonoBehaviour
             currentHealth -= 13;
             eventSystem.onRocketDamage.Invoke();
         }
-
+        if (shieldActivate)
+        {
+            shieldObject.SetActive(true);
+        }
+        else
+        {
+            shieldObject.SetActive(false);
+        }
         if (Input.GetKeyDown(KeyCode.RightControl))
         {
             topDownCarController.LunchRocket();
+            topDownCarController.LunchMine();
         }
         topDownCarController.SetInputVector(inputVector);
 
@@ -78,15 +89,48 @@ public class PlayerController : MonoBehaviour
         {
             pathCounter += 1;
         }
+        if (collision.gameObject.CompareTag("mine"))
+        {
+            Destroy(collision.gameObject);
+            if (!shieldActivate)
+            {
+                currentHealth -= 30;
+            }
+            else
+            {
+                shieldHealth -= 30;
+                if (shieldHealth >= 0) return;
+                currentHealth += shieldHealth;
+                shieldActivate = false;
+            }
+            eventSystem.onRocketDamage.Invoke();
+
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Box"))
         {
             itemPrefab = prefabs[GetRandomPrefabType(prefabs.Length)];
-            if (itemPrefab == "rocket")
+            if (topDownCarController.ActiveCombo == "")
             {
-                topDownCarController.ActiveCombo = "rocket";
+                if (itemPrefab == "rocket")
+                {
+                    topDownCarController.ActiveCombo = "rocket";
+                }
+                if (itemPrefab == "mine")
+                {
+                    topDownCarController.ActiveCombo = "mine";
+                }
+            }
+            
+            if (itemPrefab == "shield")
+            {
+                //currentHealth += 40;
+                shieldHealth = 40;
+                eventSystem.onRocketDamage.Invoke();
+                shieldActivate = true;
+                //topDownCarController.ActiveCombo = "shield";
             }
             Destroy(collision.gameObject);
         }
@@ -94,8 +138,19 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("second rocket"))
         {
             Destroy(collision.gameObject);
-            currentHealth -= 30;
+            if (!shieldActivate)
+            {
+                currentHealth -= 30;
+            }
+            else
+            {
+                shieldHealth -= 30;
+                if (shieldHealth >= 0) return;
+                currentHealth += shieldHealth;
+                shieldActivate = false;
+            }
             eventSystem.onRocketDamage.Invoke();
+
         }
     }
     int GetRandomPrefabType(int max)

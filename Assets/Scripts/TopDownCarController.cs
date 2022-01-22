@@ -15,6 +15,10 @@ public class TopDownCarController : MonoBehaviour
     public GameObject RocketObject;
     public GameObject RocketPrefab;
     GameObject Rocket;
+    
+    public GameObject MineObject;
+    public GameObject MinePrefab;
+    GameObject Mine;
     // Local variables
     float accelrationInput = 0;
     float steeringInput = 0;
@@ -45,20 +49,35 @@ public class TopDownCarController : MonoBehaviour
             {
                 RocketObject.SetActive(true);
             }
+            if (ActiveCombo == "mine")
+            {
+                MineObject.SetActive(true);
+            }
         }
         else
         {
             RocketObject.SetActive(false);
+            MineObject.SetActive(false);
         }
     }
 
+    public void LunchMine()
+    {
+        if (ActiveCombo == "mine")
+        {
+            RocketObject.SetActive(false);
+            Mine = Instantiate(MinePrefab);
+            Mine.transform.position = transform.position - new Vector3(3*carRigidbody2D.GetRelativeVector(Vector2.up).x, 3*carRigidbody2D.GetRelativeVector(Vector2.up).y, 0);
+            ActiveCombo = "";
+        }
+    }
     public void LunchRocket()
     {
         if (ActiveCombo == "rocket")
         {
             RocketObject.SetActive(false);
             Rocket = Instantiate(RocketPrefab);
-            Rocket.transform.position = transform.position + new Vector3(carRigidbody2D.GetRelativeVector(Vector2.up).x, carRigidbody2D.GetRelativeVector(Vector2.up).y, -1);
+            Rocket.transform.position = transform.position + new Vector3(carRigidbody2D.GetRelativeVector(Vector2.up).x, carRigidbody2D.GetRelativeVector(Vector2.up).y, 0);
             ActiveCombo = "";
         }
     }
