@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        
     }
 
     private void Update()
@@ -42,6 +43,16 @@ public class PlayerController : MonoBehaviour
         {
             topDownCarController.maxSpeed = 20;
             topDownCarController.accelerationFactor = 15;
+        }
+        if (P1 == 2)
+        {
+            topDownCarController.ActiveCombo = "mine";
+            PlayerPrefs.SetInt("P1",0);
+        }
+        if (P1 == 3)
+        {
+            topDownCarController.ActiveCombo = "rocket";
+            PlayerPrefs.SetInt("P1",0);
         }
         Vector2 inputVector = Vector2.zero;
 

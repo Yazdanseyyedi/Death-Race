@@ -32,6 +32,7 @@ public class SecondPlayerController : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        
     }
 
     private void Update()
@@ -41,6 +42,16 @@ public class SecondPlayerController : MonoBehaviour
         {
             topDownCarController.maxSpeed = 30;
             topDownCarController.accelerationFactor = 20;
+        }
+        if (P2 == 2)
+        {
+            topDownCarController.ActiveCombo = "mine";
+            PlayerPrefs.SetInt("P2",0);
+        }
+        if (P2 == 3)
+        {
+            topDownCarController.ActiveCombo = "rocket";
+            PlayerPrefs.SetInt("P2",0);
         }
 
         Debug.Log(topDownCarController.maxSpeed);
